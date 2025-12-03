@@ -485,6 +485,7 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                         <h3 class="text-lg font-semibold text-slate-700">焓湿图 (Psychrometric Chart)</h3>
                         <div class="flex gap-4 text-xs">
                             <div class="flex items-center gap-1"><div class="w-3 h-3 bg-green-500 rounded-full opacity-20 border border-green-500"></div> 舒适区</div>
+                            <div class="flex items-center gap-1"><div class="w-3 h-3 bg-amber-500 rounded-full opacity-80 border border-amber-500"></div> 可接受区</div>
                             <div class="flex items-center gap-1"><div class="w-3 h-3 bg-black rounded-full"></div> 当前状态</div>
                         </div>
                     </div>
@@ -692,19 +693,50 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                     borderColor: '#fff',
                     borderWidth: 2,
                     pointRadius: 8,
-                    order: 1
+                    order: 10
                 },
+                // Uncomfortable Zone (background - extremes)
                 {
-                    label: '理想舒适区 (20-25°C, 40-60%)',
+                    label: '不舒适区',
                     data: [
-                        {x: 20, y: 40}, {x: 25, y: 40}, 
-                        {x: 25, y: 60}, {x: 20, y: 60}, {x: 20, y: 40}
+                        {x: 0, y: 0}, {x: 0, y: 100}, {x: 40, y: 100}, {x: 40, y: 0}, {x: 0, y: 0}
                     ],
                     showLine: true,
                     fill: true,
-                    backgroundColor: 'rgba(34, 197, 94, 0.2)',
-                    borderColor: 'rgba(34, 197, 94, 0.8)',
+                    backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                    borderColor: 'rgba(239, 68, 68, 0.12)',
+                    borderWidth: 1,
+                    pointRadius: 0,
+                    tension: 0,
+                    order: 0
+                },
+                // Acceptable Zone (middle layer)
+                {
+                    type: 'line',
+                    label: '可接受区',
+                    data: [
+                        {x: 15, y: 30}, {x: 18, y: 33}, {x: 20, y: 35}, {x: 22, y: 33}, {x: 24, y: 35}, {x: 26, y: 45}, {x: 26, y: 65}, {x: 19, y: 70}, {x: 15, y: 30}
+                    ],
+                    showLine: true,
+                    fill: true,
+                    backgroundColor: 'rgba(245, 158, 11, 0.75)',
+                    borderColor: 'rgba(245, 158, 11, 1)',
                     borderWidth: 2,
+                    pointRadius: 0,
+                    tension: 0,
+                    order: 4
+                },
+                // Comfortable Zone (top layer)
+                {
+                    label: '理想舒适区',
+                    data: [
+                        {x: 20, y: 40}, {x: 21.5, y: 38}, {x: 23, y: 37}, {x: 25, y: 40}, {x: 25, y: 60}, {x: 20, y: 60}, {x: 20, y: 40}
+                    ],
+                    showLine: true,
+                    fill: true,
+                    backgroundColor: 'rgba(34, 197, 94, 0.14)',
+                    borderColor: 'rgba(34, 197, 94, 0.9)',
+                    borderWidth: 1.5,
                     pointRadius: 0,
                     tension: 0,
                     order: 2
@@ -745,6 +777,8 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
             }
         }
     });
+    // expose chart to window for other scripts (panel switcher)
+    window.chart = chart;
 
     let isAHLocked = false;
     let lockedAHValue = 0;
@@ -799,8 +833,14 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         humidityDisplay.innerText = rh + "%";
         ahDisplay.innerText = currentAH.toFixed(1);
         
-        // Update Chart
-        chart.data.datasets[0].data[0] = {x: t, y: rh};
+        // Update Chart: find the current-state dataset by label to avoid index fragility
+        const stateDs = chart.data.datasets.find(ds => ds.label === '当前状态');
+        if (stateDs) {
+            stateDs.data[0] = {x: t, y: rh};
+        } else {
+            // fallback to first dataset (legacy)
+            chart.data.datasets[0].data[0] = {x: t, y: rh};
+        }
         chart.update();
 
         // Update Comfort Box
