@@ -10,11 +10,3 @@
 
 许可
 - 本项目采用 Apache License 2.0 许可（详见 `LICENSE` 文件）。
-
-注意
-- 如果你是仓库所有者，请在 `LICENSE` 的版权行中替换 `[copyright owner]` 为你的名字或组织。
-
-如果需要，我可以：
-- 把 README 翻译为更详尽的英文文档；
-- 添加贡献指南或 `CONTRIBUTING.md`；
-- 为发布到 GitHub 添加 `.github` 配置（issue template、action 等）。
