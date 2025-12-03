@@ -94,5 +94,16 @@
 ### 4. 技术架构
 *   **PWA 支持**：添加离线支持，使其可作为独立应用安装。
 
+---
+
+## 参考资料 (References)
+
+本工具的计算逻辑与舒适度标准参考了以下文档：
+
+1.  **Psychrometrics - Dew Point and Wet-Bulb Temperature** (CED Engineering)
+    *   [M08-011 - Course Preview - R1.pdf](https://www.cedengineering.com/userfiles/M08-011%20-%20Course%20Preview%20-%20R1.pdf)
+2.  **Residential Indoor Air Quality Guideline: Moulds** (Health Canada)
+    *   [H144-33-2016-eng.pdf](https://publications.gc.ca/collections/collection_2018/sc-hc/H144-33-2016-eng.pdf)
+
 许可
 - 本项目采用 Apache License 2.0 许可（详见 `LICENSE` 文件）。
