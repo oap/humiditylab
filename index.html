@@ -362,272 +362,165 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     </style></head>
 <body class="bg-slate-50 text-slate-800">
 
-<!-- Page shell: nav + panels -->
-<div class="app-shell min-h-screen flex flex-col">
-  <!-- NAV -->
-  <nav id="page-nav" class="flex items-center justify-center gap-4 bg-white border-b border-slate-200 shadow-sm">
-    <button class="nav-btn px-4 py-3 text-sm font-semibold transition-colors" data-target="panel-1">可视化（Comfort）</button>
-    <button class="nav-btn px-4 py-3 text-sm font-semibold" data-target="panel-2">结露模拟（Window）</button>
-  </nav>
 
-  <!-- Panels container: fills remaining viewport -->
-  <div class="panel-container flex-1 relative" style="min-height:calc(100vh - 56px);">
-    <!-- Panel 1: Hero + Tool 1 -->
-    <div id="panel-1" class="panel active absolute inset-0 overflow-auto bg-slate-50 p-6">
-
-      <!-- Hero Section (moved inside panel-1) -->
-      <div class="relative bg-white overflow-hidden border-b border-slate-200 mb-6">
-          <div class="absolute inset-0">
-              <img alt="舒适室内环境" class="w-full h-full object-cover opacity-20" src="data:image/svg+xml;base64,IDxzdmcgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxkZWZzPiA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSItMTAwJSIgeTE9IjAiIHgyPSIwIiB5Mj0iMCI+IDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2IwYjBiMCIvPiA8c3RvcCBvZmZzZXQ9Ii41IiBzdG9wLWNvbG9yPSIjZjBmMGYwIi8+IDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2IwYjBiMCIvPiA8YW5pbWF0ZVRyYW5zZm9ybSBpZD0iYSIgYXR0cmlidXRlTmFtZT0iZ3JhZGllbnRUcmFuc2Zvcm0iIHR5cGU9InRyYW5zbGF0ZSIgZnJvbT0iMCIgdG89IjIiIGR1cj0iMXMiIGJlZ2luPSIwcyIvPiA8YW5pbWF0ZVRyYW5zZm9ybSBpZD0iYiIgYXR0cmlidXRlTmFtZT0iZ3JhZGllbnRUcmFuc2Zvcm0iIHR5cGU9InRyYW5zbGF0ZSIgZnJvbT0iMCIgdG89IjIiIGR1cj0iMS41cyIgYmVnaW49ImEuZW5kIi8+IDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9ImdyYWRpZW50VHJhbnNmb3JtIiB0eXBlPSJ0cmFuc2xhdGUiIGZyb209IjAiIHRvPSIyIiBkdXI9IjJzIiBiZWdpbj0iYi5lbmQiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+IDwvbGluZWFyR3JhZGllbnQ+IDwvZGVmcz4gPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9InVybCgjZykiLz4gPC9zdmc+">
-              <div class="absolute inset-0 bg-gradient-to-b from-white/90 to-slate-50"></div>
-          </div>
-          <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-              <div class="text-center">
-                  <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl mb-4">
-                      空气湿度实验室
-                  </h1>
-                  <p class="max-w-2xl mx-auto text-lg text-slate-600">
-                      探索相对湿度、绝对湿度与温度之间的奥秘。
-                  </p>
-              </div>
-          </div>
-      </div>
-
-      <!-- Main Content (Tool 1) -->
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-
-        <!-- Tool 1: Comfort & Physics Visualizer -->
-        <section id="comfort-tool" class="scroll-mt-20">
-            <div class="flex flex-col lg:flex-row items-stretch gap-8">
-                
-                <!-- Controls Panel -->
-                <div class="w-full lg:w-1/3 bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex flex-col">
-                    <!-- (original controls content kept unchanged) -->
-                    
-                    <div class="mb-6 pb-4 border-b border-slate-100">
-                        <h2 class="text-2xl font-bold flex items-center gap-2 text-slate-800">
-                            <span class="material-symbols-outlined text-blue-500">science</span>
-                            参数调节
-                        </h2>
-                        <p class="text-sm text-slate-500 mt-1">
-                            调整温度，观察湿度的变化关系
-                        </p>
-                    </div>
-
-                    <div class="space-y-8 flex-1">
-                        <!-- Temperature Control -->
-                        <div>
-                            <label class="flex justify-between mb-2 font-medium items-end">
-                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">thermostat</span> 室内温度</span>
-                                <span class="text-2xl font-bold text-blue-600 font-mono" id="temp-display">14°C</span>
-                            </label>
-                            <input type="range" id="temp-slider" min="0" max="40" value="22" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
-                            <div class="flex justify-between text-xs text-slate-400 mt-2">
-                                <span>0°C</span>
-                                <span>20°C</span>
-                                <span>40°C</span>
-                            </div>
-                        </div>
-
-                        <!-- Relative Humidity Control -->
-                        <div>
-                            <label class="flex justify-between mb-2 font-medium items-end">
-                                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">water_drop</span> 相对湿度 (RH)</span>
-                                <span class="text-2xl font-bold text-teal-600 font-mono" id="humidity-display">63%</span>
-                            </label>
-                            <input type="range" id="humidity-slider" min="0" max="100" value="50" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
-                            <div class="flex justify-between text-xs text-slate-400 mt-2">
-                                <span>干燥</span>
-                                <span>适宜 (40-60%)</span>
-                                <span>潮湿</span>
-                            </div>
-                        </div>
-
-                        <!-- Absolute Humidity (Calculated / Locking Mechanism) -->
-                        <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 relative overflow-hidden transition-all duration-300" id="ah-container">
-                            <div class="flex justify-between items-center mb-3">
-                                <div class="flex flex-col">
-                                    <span class="text-sm font-bold text-indigo-900 flex items-center gap-1">
-                                        绝对湿度 (AH)
-                                        <span class="material-symbols-outlined text-xs text-indigo-400 cursor-help" title="空气中实际含有的水蒸气质量 (克/立方米)">help</span>
-                                    </span>
-                                    <span class="text-xs text-indigo-500">空气中的实际含水量</span>
-                                </div>
-                                <!-- Lock Toggle -->
-                                <button id="ah-lock-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border shadow-sm bg-white text-slate-500 border-slate-200 hover:bg-slate-50">
-                                    <span class="material-symbols-outlined text-sm" id="lock-icon">lock_open</span>
-                                    <span id="lock-text">锁定 AH</span>
-                                </button>
-                            </div>
-
-                            <div class="flex items-baseline gap-2">
-                                <span class="text-4xl font-black text-indigo-700 font-mono tracking-tight" id="ah-display">7.6</span>
-                                <span class="text-sm font-medium text-indigo-600">g/m³</span>
-                            </div>
-
-                            <div id="lock-message" class="hidden mt-3 text-xs bg-white/60 p-2 rounded text-indigo-800 border border-indigo-100 flex items-start gap-1">
-                                <span class="material-symbols-outlined text-sm shrink-0 mt-0.5">info</span>
-                                <span>AH 已锁定。调节温度将自动改变相对湿度，模拟密封环境加热/冷却效果。</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Comfort Result Badge -->
-                    <div id="comfort-result" class="mt-8 p-4 rounded-xl border transition-colors duration-300 bg-blue-50 border-blue-200">
-                        <h3 id="comfort-title" class="font-bold text-lg mb-1 flex items-center gap-2 text-blue-800"><span class="material-symbols-outlined">sentiment_dissatisfied</span> 潮湿</h3>
-                        <p id="comfort-desc" class="text-sm text-green-700">易滋生尘螨、霉菌，体感闷热或阴冷。</p>
-                    </div>
-                </div>
-
-                <!-- Visualization Panel -->
-                <div class="w-full lg:w-2/3 bg-white p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col min-h-[500px]">
-                    <div class="flex justify-between items-center mb-4 px-2">
-                        <h3 class="text-lg font-semibold text-slate-700">焓湿图 (Psychrometric Chart)</h3>
-                        <div class="flex gap-4 text-xs">
-                            <div class="flex items-center gap-1"><div class="w-3 h-3 bg-green-500 rounded-full opacity-20 border border-green-500"></div> 舒适区</div>
-                            <div class="flex items-center gap-1"><div class="w-3 h-3 bg-amber-500 rounded-full opacity-80 border border-amber-500"></div> 可接受区</div>
-                            <div class="flex items-center gap-1"><div class="w-3 h-3 bg-black rounded-full"></div> 当前状态</div>
-                        </div>
-                    </div>
-                    
-                    <div class="relative w-full flex-1 bg-slate-50 rounded-xl border border-slate-200 overflow-hidden p-2">
-                        <canvas id="psychrometricChart" width="696" height="421" style="display: block; box-sizing: border-box; height: 421px; width: 696px;"></canvas>
-                    </div>
-
-                    <!-- Educational Insight -->
-                    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-blue-50 p-3 rounded-lg border border-blue-100">
-                            <h4 class="font-bold text-blue-800 text-sm mb-1">保持相对湿度稳定</h4>
-                            <p class="text-xs text-blue-700">
-                                若要维持 50% 相对湿度：
-                                <br>• 在 10°C 时，需要 <strong>4.7 g/m³</strong> 水汽
-                                <br>• 在 25°C 时，需要 <strong>11.5 g/m³</strong> 水汽
-                                <br>这意味着冬季加热冷空气后，必须<strong>加湿</strong>才能保持舒适。
-                            </p>
-                        </div>
-                        <div class="bg-amber-50 p-3 rounded-lg border border-amber-100">
-                            <h4 class="font-bold text-amber-800 text-sm mb-1">温度变化的影响 (绝对湿度不变)</h4>
-                            <p class="text-xs text-amber-700">
-                                尝试点击“锁定 AH”并升高温度。
-                                你会发现相对湿度 (RH) <strong>迅速下降</strong>。
-                                这就是为什么冬天室内开了暖气会感觉非常干燥的原因。
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-      </div>
+<!-- Hero Section -->
+<div class="relative bg-white overflow-hidden border-b border-slate-200">
+    <div class="absolute inset-0">
+        <img alt="舒适室内环境" class="w-full h-full object-cover opacity-20" src="data:image/svg+xml;base64,IDxzdmcgd2lkdGg9IjEwMjQiIGhlaWdodD0iMTAyNCIgdmlld0JveD0iMCAwIDEwMCAxMDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+IDxkZWZzPiA8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgxPSItMTAwJSIgeTE9IjAiIHgyPSIwIiB5Mj0iMCI+IDxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2IwYjBiMCIvPiA8c3RvcCBvZmZzZXQ9Ii41IiBzdG9wLWNvbG9yPSIjZjBmMGYwIi8+IDxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2IwYjBiMCIvPiA8YW5pbWF0ZVRyYW5zZm9ybSBpZD0iYSIgYXR0cmlidXRlTmFtZT0iZ3JhZGllbnRUcmFuc2Zvcm0iIHR5cGU9InRyYW5zbGF0ZSIgZnJvbT0iMCIgdG89IjIiIGR1cj0iMXMiIGJlZ2luPSIwcyIvPiA8YW5pbWF0ZVRyYW5zZm9ybSBpZD0iYiIgYXR0cmlidXRlTmFtZT0iZ3JhZGllbnRUcmFuc2Zvcm0iIHR5cGU9InRyYW5zbGF0ZSIgZnJvbT0iMCIgdG89IjIiIGR1cj0iMS41cyIgYmVnaW49ImEuZW5kIi8+IDxhbmltYXRlVHJhbnNmb3JtIGF0dHJpYnV0ZU5hbWU9ImdyYWRpZW50VHJhbnNmb3JtIiB0eXBlPSJ0cmFuc2xhdGUiIGZyb209IjAiIHRvPSIyIiBkdXI9IjJzIiBiZWdpbj0iYi5lbmQiIHJlcGVhdENvdW50PSJpbmRlZmluaXRlIi8+IDwvbGluZWFyR3JhZGllbnQ+IDwvZGVmcz4gPHJlY3Qgd2lkdGg9IjEwMCIgaGVpZ2h0PSIxMDAiIGZpbGw9InVybCgjZykiLz4gPC9zdmc+">
+        <div class="absolute inset-0 bg-gradient-to-b from-white/90 to-slate-50"></div>
     </div>
-
-    <!-- Panel 2: Winter Condensation Simulator -->
-    <div id="panel-2" class="panel absolute inset-0 overflow-auto bg-slate-900 text-white p-6 hidden">
-      <!-- Tool 2 content (kept intact) -->
-      <section class="bg-slate-900 text-white rounded-3xl overflow-hidden shadow-2xl relative">
-        <!-- Decor -->
-        <div class="absolute top-0 right-0 p-32 bg-blue-600 blur-[150px] opacity-20 pointer-events-none"></div>
-        <div class="absolute bottom-0 left-0 p-32 bg-teal-600 blur-[150px] opacity-20 pointer-events-none"></div>
-
-        <div class="relative p-6 md:p-10">
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined text-4xl text-blue-300">ac_unit</span>
-                    <div>
-                        <h2 class="text-3xl font-bold">冬季窗户结露模拟</h2>
-                        <p class="text-blue-200 text-sm mt-1">查看室内温湿度和窗户隔热性能如何影响结露</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
-                <!-- Controls -->
-                <div class="lg:col-span-4 space-y-6">
-                    <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700 backdrop-blur-md">
-                        <label class="block text-sm font-medium text-blue-200 mb-3">窗户类型 (U值)</label>
-                        <select id="window-type" class="w-full bg-slate-900 border border-slate-600 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm">
-                            <option value="5.8">单层玻璃 (U=5.8) - 极易结露</option>
-                            <option value="2.8" selected="">普通双层中空 (U=2.8) - 标准</option>
-                            <option value="1.6">Low-E 双层玻璃 (U=1.6) - 较好</option>
-                            <option value="0.8">三层高性能玻璃 (U=0.8) - 极好</option>
-                        </select>
-                    </div>
-
-                    <div class="bg-slate-800/60 p-5 rounded-2xl border border-slate-700 backdrop-blur-md space-y-6">
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-slate-300">室外温度</span>
-                                <span class="text-blue-300 font-mono" id="out-temp-disp">-10°C</span>
-                            </div>
-                            <input type="range" id="out-temp" min="-40" max="15" value="-10" step="0.5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-slate-300">室内温度</span>
-                                <span class="text-orange-300 font-mono" id="in-temp-disp">22°C</span>
-                            </div>
-                            <input type="range" id="in-temp" min="15" max="30" value="22" step="0.5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1">
-                                <span class="text-sm text-slate-300">室内湿度 (RH)</span>
-                                <span class="text-teal-300 font-mono" id="in-hum-disp">50%</span>
-                            </div>
-                            <input type="range" id="in-hum" min="10" max="80" value="50" step="0.5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
-                        </div>
-                    </div>
-
-                    <!-- Data Readout -->
-                    <div class="grid grid-cols-2 gap-3">
-                        <div class="bg-black/30 p-3 rounded-xl border border-white/5">
-                            <div class="text-xs text-slate-400 mb-1">露点温度</div>
-                            <div class="text-lg font-bold text-yellow-400 font-mono" id="dew-point-val">11.1°C</div>
-                            <div class="text-[10px] text-slate-500 mt-1 leading-tight">低于此温度即结露</div>
-                        </div>
-                        <div class="bg-black/30 p-3 rounded-xl border border-white/5">
-                            <div class="text-xs text-slate-400 mb-1">玻璃内表面</div>
-                            <div class="text-lg font-bold text-blue-300 font-mono" id="glass-temp-val">11.2°C</div>
-                            <div class="text-[10px] text-slate-500 mt-1 leading-tight">取决于温差与保温性</div>
-                        </div>
-                        <div class="bg-indigo-900/30 p-3 rounded-xl border border-indigo-500/20 col-span-2 flex justify-between items-center">
-                            <div>
-                                <div class="text-xs text-indigo-300 mb-0.5">绝对湿度</div>
-                                <div class="text-[10px] text-indigo-400">空气含水量</div>
-                            </div>
-                            <div class="text-xl font-bold text-indigo-200 font-mono" id="sim-ah-val">9.7 g/m³</div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Simulation Visual -->
-                <div class="lg:col-span-8 relative min-h-[400px] flex items-center justify-center bg-slate-900/50 rounded-2xl border border-slate-700 overflow-hidden">
-                    <!-- Window Frame -->
-                    <div class="relative w-full max-w-md aspect-[3/4] bg-slate-300 rounded-lg p-3 shadow-2xl border-[6px] border-slate-400 z-10">
-                        <!-- Glass -->
-                        <div class="glass-pane w-full h-full bg-slate-800 relative rounded overflow-hidden border border-slate-500">
-                            <!-- Background Image -->
-                            <img alt="窗外雪景" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105" src="images/street.jpg" style="">
-                            
-                            <!-- Layers -->
-                            <div id="fog-layer" class="condensation-overlay" style="opacity: 0;"></div>
-                            <div id="frost-layer" class="frost-overlay" style="opacity: 0;"></div>
-                            
-                            <!-- Droplets Container (JS will populate) -->
-                            <div id="droplets-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
-                        </div>
-                        <!-- Sill -->
-                        <div class="absolute -bottom-4 -left-2 -right-2 h-6 bg-slate-400 rounded-sm shadow border-t border-slate-200"></div>
-                    </div>
-
-                    <!-- Status Indicator Overlay -->
-                    <div id="status-alert" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-green-600/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-green-400 w-max max-w-[90%]"><span class="material-symbols-outlined">check_circle</span><span>玻璃表面干燥</span></div>
-                </div>
-            </div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold tracking-tight text-slate-900 sm:text-5xl mb-4">
+                空气湿度实验室
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600">
+                一个探索相对湿度、绝对湿度、温度与结露现象的交互式模拟器。
+            </p>
         </div>
-      </section>
     </div>
-  </div>
 </div>
+
+<!-- Main Content Grid -->
+<div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+
+        <!-- Controls Panel (Left Column) -->
+        <div class="lg:col-span-1 bg-white p-6 rounded-2xl shadow-lg border border-slate-100 flex flex-col space-y-6 lg:sticky lg:top-8">
+            <!-- Indoor Controls -->
+            <div>
+                <div class="mb-6 pb-4 border-b border-slate-100">
+                    <h2 class="text-2xl font-bold flex items-center gap-2 text-slate-800">
+                        <span class="material-symbols-outlined text-blue-500">home</span>
+                        环境参数
+                    </h2>
+                    <p class="text-sm text-slate-500 mt-1">
+                        调节室内温湿度，观察舒适度及结露点变化。
+                    </p>
+                </div>
+                <div class="space-y-8">
+                    <!-- Temperature Control -->
+                    <div>
+                        <label class="flex justify-between mb-2 font-medium items-end">
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">thermostat</span> 室内温度</span>
+                            <span class="text-2xl font-bold text-blue-600 font-mono" id="temp-display">22°C</span>
+                        </label>
+                        <input type="range" id="temp-slider" min="15" max="30" value="22" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+                    <!-- Relative Humidity Control -->
+                    <div>
+                        <label class="flex justify-between mb-2 font-medium items-end">
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">water_drop</span> 相对湿度 (RH)</span>
+                            <span class="text-2xl font-bold text-teal-600 font-mono" id="humidity-display">50%</span>
+                        </label>
+                        <input type="range" id="humidity-slider" min="10" max="80" value="50" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                    </div>
+                    <!-- Absolute Humidity (Calculated / Locking Mechanism) -->
+                    <div class="bg-indigo-50 p-4 rounded-xl border border-indigo-100 relative overflow-hidden transition-all duration-300" id="ah-container">
+                        <div class="flex justify-between items-center mb-3">
+                            <div class="flex flex-col">
+                                <span class="text-sm font-bold text-indigo-900 flex items-center gap-1">绝对湿度 (AH) <span class="material-symbols-outlined text-xs text-indigo-400 cursor-help" title="空气中实际含有的水蒸气质量 (克/立方米)">help</span></span>
+                                <span class="text-xs text-indigo-500">空气中的实际含水量</span>
+                            </div>
+                            <button id="ah-lock-btn" class="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border shadow-sm bg-white text-slate-500 border-slate-200 hover:bg-slate-50">
+                                <span class="material-symbols-outlined text-sm" id="lock-icon">lock_open</span>
+                                <span id="lock-text">锁定 AH</span>
+                            </button>
+                        </div>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-4xl font-black text-indigo-700 font-mono tracking-tight" id="ah-display">9.7</span>
+                            <span class="text-sm font-medium text-indigo-600">g/m³</span>
+                        </div>
+                        <div id="lock-message" class="hidden mt-3 text-xs bg-white/60 p-2 rounded text-indigo-800 border border-indigo-100 flex items-start gap-1">
+                            <span class="material-symbols-outlined text-sm shrink-0 mt-0.5">info</span>
+                            <span>AH 已锁定。调节温度将自动改变相对湿度，模拟密封环境加热/冷却效果。</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Outdoor & Window Controls -->
+            <div>
+                <div class="space-y-8">
+                    <!-- Outdoor Temp -->
+                     <div>
+                        <div class="flex justify-between mb-2 font-medium items-end">
+                            <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">ac_unit</span> 室外温度</span>
+                            <span class="text-2xl font-bold text-blue-600 font-mono" id="out-temp-disp">-10°C</span>
+                        </div>
+                        <input type="range" id="out-temp" min="-40" max="15" value="-10" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                    </div>
+                </div>
+            </div>
+
+             <!-- Combined Data Readout -->
+            <div class="grid grid-cols-2 gap-3 mt-4">
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 mb-1">露点温度</div>
+                    <div class="text-lg font-bold text-yellow-400 font-mono" id="dew-point-val">11.1°C</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5 leading-tight">低于此温度即结露</div>
+                </div>
+                <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                    <div class="text-xs text-slate-500 mb-1">玻璃内表面温度</div>
+                    <div class="text-lg font-bold text-blue-300 font-mono" id="glass-temp-val">11.2°C</div>
+                    <div class="text-[10px] text-slate-400 mt-0.5 leading-tight">取决于温差与U值</div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Visualizations Panel (Right Columns) -->
+        <div class="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+
+            <!-- Psychrometric Chart -->
+            <div class="w-full bg-white p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col min-h-[500px]">
+                <div class="flex justify-between items-center mb-4 px-2">
+                    <h3 class="text-lg font-semibold text-slate-700">焓湿图</h3>
+                    <div class="flex gap-4 text-xs">
+                        <div class="flex items-center gap-1"><div class="w-3 h-3 bg-green-500 rounded-full opacity-20 border border-green-500"></div> 舒适</div>
+                        <div class="flex items-center gap-1"><div class="w-3 h-3 bg-black rounded-full"></div> 当前</div>
+                    </div>
+                </div>
+                <div class="relative w-full flex-1 bg-slate-50 rounded-xl border border-slate-200 overflow-hidden p-2">
+                    <canvas id="psychrometricChart"></canvas>
+                </div>
+                                 <div id="comfort-result" class="col-span-2 p-4 rounded-xl border transition-colors duration-300 bg-green-50 border-green-200">
+                    <h3 id="comfort-title" class="font-bold text-lg mb-1 flex items-center gap-2 text-green-800"><span class="material-symbols-outlined">sentiment_satisfied</span>完美舒适</h3>
+                    <p id="comfort-desc" class="text-sm text-green-700">理想居住环境，利于健康，抑制霉菌病毒。</p>
+                </div>
+            </div>
+
+            <!-- Window Simulation -->
+            <div class="w-full bg-slate-900 text-white p-4 rounded-2xl shadow-lg border border-slate-100 flex flex-col min-h-[500px] justify-center items-center relative overflow-hidden">
+            <!-- Window Type -->
+                <div>
+                    <label class="block mb-2 font-medium">窗户类型 (U值)</label>
+                    <select id="window-type" class="w-full bg-slate-50 border border-slate-200 rounded-lg px-4 py-3 text-slate-800 focus:ring-2 focus:ring-blue-500 focus:outline-none text-sm">
+                        <option value="5.8">单层玻璃 (U=5.8) - 极易结露</option>
+                        <option value="2.8" selected>普通双层中空 (U=2.8) - 标准</option>
+                        <option value="1.6">Low-E 双层玻璃 (U=1.6) - 较好</option>
+                        <option value="0.8">三层高性能玻璃 (U=0.8) - 极好</option>
+                    </select>
+                </div> 
+                <div class="absolute top-0 right-0 p-32 bg-blue-600 blur-[150px] opacity-20 pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 p-32 bg-teal-600 blur-[150px] opacity-20 pointer-events-none"></div>
+                <h3 class="text-lg font-semibold text-slate-300 absolute top-4 left-5">窗户结露模拟</h3>
+                <div class="relative w-full max-w-md aspect-[3/4] bg-slate-300 rounded-lg p-3 shadow-2xl border-[6px] border-slate-400 z-10">
+                    <div class="glass-pane w-full h-full bg-slate-800 relative rounded overflow-hidden border border-slate-500">
+                        <img alt="窗外雪景" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 hover:scale-105" src="images/street.jpg">
+                        <div id="fog-layer" class="condensation-overlay"></div>
+                        <div id="frost-layer" class="frost-overlay"></div>
+                        <div id="droplets-container" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
+                    </div>
+                    <div class="absolute -bottom-4 -left-2 -right-2 h-6 bg-slate-400 rounded-sm shadow border-t border-slate-200"></div>
+                </div>
+                <div id="status-alert" class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-green-600/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-green-400 w-max max-w-[90%]"><span class="material-symbols-outlined">check_circle</span><span>玻璃表面干燥</span></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
 
 <script>
     /* --- PHYSICS UTILITIES --- */
@@ -638,7 +531,6 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     }
 
     // Calculate Absolute Humidity (g/m³)
-    // AH = (6.112 * e^((17.67*T)/(T+243.5)) * RH * 2.1674) / (273.15 + T)
     function calculateAH(temp, rh) {
         const es = getSaturationPressure(temp);
         const ea = es * (rh / 100); // Actual vapor pressure
@@ -647,7 +539,6 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     }
 
     // Calculate Relative Humidity from Temp and Absolute Humidity
-    // RH = (AH * (273.15 + T)) / (2.1674 * 100 * es) * 100
     function calculateRH(temp, ah) {
         const es = getSaturationPressure(temp);
         const rh = (ah * (273.15 + temp)) / (2.1674 * 100 * es) * 100;
@@ -663,10 +554,11 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         return (c * gamma) / (b - gamma);
     }
 
-    /* --- TOOL 1: COMFORT VISUALIZER --- */
+    /* --- UI CONTROLS & STATE MANAGEMENT --- */
     
+    // Indoor Controls
     const tempSlider = document.getElementById('temp-slider');
-    const humiditySlider = document.getElementById('humidity-slider'); // RH
+    const humiditySlider = document.getElementById('humidity-slider');
     const tempDisplay = document.getElementById('temp-display');
     const humidityDisplay = document.getElementById('humidity-display');
     const ahDisplay = document.getElementById('ah-display');
@@ -676,9 +568,23 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     const ahContainer = document.getElementById('ah-container');
     const lockMessage = document.getElementById('lock-message');
     
+    // Outdoor/Window Controls
+    const outTempIn = document.getElementById('out-temp');
+    const winTypeIn = document.getElementById('window-type');
+    const outTempDisp = document.getElementById('out-temp-disp');
+
+    // Readout Displays
     const comfortTitle = document.getElementById('comfort-title');
     const comfortDesc = document.getElementById('comfort-desc');
     const comfortBox = document.getElementById('comfort-result');
+    const dewPointVal = document.getElementById('dew-point-val');
+    const glassTempVal = document.getElementById('glass-temp-val');
+    
+    // Simulation Visuals
+    const dropletsContainer = document.getElementById('droplets-container');
+    const fogLayer = document.getElementById('fog-layer');
+    const frostLayer = document.getElementById('frost-layer');
+    const statusAlert = document.getElementById('status-alert');
 
     // Chart Setup
     const ctx = document.getElementById('psychrometricChart').getContext('2d');
@@ -695,51 +601,23 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                     pointRadius: 8,
                     order: 10
                 },
-                // Uncomfortable Zone (background - extremes)
                 {
                     label: '不舒适区',
-                    data: [
-                        {x: 0, y: 0}, {x: 0, y: 100}, {x: 40, y: 100}, {x: 40, y: 0}, {x: 0, y: 0}
-                    ],
-                    showLine: true,
-                    fill: true,
-                    backgroundColor: 'rgba(239, 68, 68, 0.08)',
-                    borderColor: 'rgba(239, 68, 68, 0.12)',
-                    borderWidth: 1,
-                    pointRadius: 0,
-                    tension: 0,
-                    order: 0
+                    data: [{x: 0, y: 0}, {x: 0, y: 100}, {x: 40, y: 100}, {x: 40, y: 0}, {x: 0, y: 0}],
+                    showLine: true, fill: true, backgroundColor: 'rgba(239, 68, 68, 0.08)',
+                    borderColor: 'rgba(239, 68, 68, 0.12)', borderWidth: 1, pointRadius: 0, tension: 0, order: 0
                 },
-                // Acceptable Zone (middle layer)
                 {
-                    type: 'line',
-                    label: '可接受区',
-                    data: [
-                        {x: 15, y: 30}, {x: 18, y: 33}, {x: 20, y: 35}, {x: 22, y: 33}, {x: 24, y: 35}, {x: 26, y: 45}, {x: 26, y: 65}, {x: 19, y: 70}, {x: 15, y: 30}
-                    ],
-                    showLine: true,
-                    fill: true,
-                    backgroundColor: 'rgba(245, 158, 11, 0.75)',
-                    borderColor: 'rgba(245, 158, 11, 1)',
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    tension: 0,
-                    order: 4
+                    type: 'line', label: '可接受区',
+                    data: [{x: 15, y: 30}, {x: 18, y: 33}, {x: 20, y: 35}, {x: 22, y: 33}, {x: 24, y: 35}, {x: 26, y: 45}, {x: 26, y: 65}, {x: 19, y: 70}, {x: 15, y: 30}],
+                    showLine: true, fill: true, backgroundColor: 'rgba(245, 158, 11, 0.75)',
+                    borderColor: 'rgba(245, 158, 11, 1)', borderWidth: 2, pointRadius: 0, tension: 0, order: 4
                 },
-                // Comfortable Zone (top layer)
                 {
                     label: '理想舒适区',
-                    data: [
-                        {x: 20, y: 40}, {x: 21.5, y: 38}, {x: 23, y: 37}, {x: 25, y: 40}, {x: 25, y: 60}, {x: 20, y: 60}, {x: 20, y: 40}
-                    ],
-                    showLine: true,
-                    fill: true,
-                    backgroundColor: 'rgba(34, 197, 94, 0.14)',
-                    borderColor: 'rgba(34, 197, 94, 0.9)',
-                    borderWidth: 1.5,
-                    pointRadius: 0,
-                    tension: 0,
-                    order: 2
+                    data: [{x: 20, y: 40}, {x: 21.5, y: 38}, {x: 23, y: 37}, {x: 25, y: 40}, {x: 25, y: 60}, {x: 20, y: 60}, {x: 20, y: 40}],
+                    showLine: true, fill: true, backgroundColor: 'rgba(34, 197, 94, 0.14)',
+                    borderColor: 'rgba(34, 197, 94, 0.9)', borderWidth: 1.5, pointRadius: 0, tension: 0, order: 2
                 }
             ]
         },
@@ -747,67 +625,72 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
             responsive: true,
             maintainAspectRatio: false,
             scales: {
-                x: {
-                    type: 'linear',
-                    position: 'bottom',
-                    title: { display: true, text: '温度 (°C)' },
-                    min: 0,
-                    max: 40,
-                    grid: { color: '#f1f5f9' }
-                },
-                y: {
-                    title: { display: true, text: '相对湿度 (%)' },
-                    min: 0,
-                    max: 100,
-                    grid: { color: '#f1f5f9' }
-                }
+                x: { type: 'linear', position: 'bottom', title: { display: true, text: '温度 (°C)' }, min: 0, max: 40, grid: { color: '#f1f5f9' }},
+                y: { title: { display: true, text: '相对湿度 (%)' }, min: 0, max: 100, grid: { color: '#f1f5f9' }}
             },
             plugins: {
                 legend: { display: false },
-                tooltip: { 
-                    callbacks: {
-                        label: function(context) {
-                            if (context.datasetIndex === 0) {
-                                return `当前: ${context.parsed.x}°C, ${context.parsed.y}% RH`;
-                            }
-                            return null;
-                        }
-                    }
-                }
+                tooltip: { callbacks: { label: (ctx) => ctx.datasetIndex === 0 ? `当前: ${ctx.parsed.x}°C, ${ctx.parsed.y}% RH` : null } }
             }
         }
     });
-    // expose chart to window for other scripts (panel switcher)
-    window.chart = chart;
 
     let isAHLocked = false;
     let lockedAHValue = 0;
 
     function updateComfortUI(t, rh) {
-        // Comfort Logic
         let title, desc, boxClass, titleClass;
-
         if (t >= 20 && t <= 25 && rh >= 40 && rh <= 60) {
-            title = "完美舒适"; desc = "理想居住环境，利于健康，抑制霉菌病毒。";
-            boxClass = "bg-green-50 border-green-200"; titleClass = "text-green-800";
+            [title, desc, boxClass, titleClass] = ["完美舒适", "理想居住环境，利于健康，抑制霉菌病毒。", "bg-green-50 border-green-200", "text-green-800"];
         } else if (rh < 40) {
-            title = "干燥"; desc = "易产生静电、皮肤干裂、呼吸道不适。";
-            boxClass = "bg-amber-50 border-amber-200"; titleClass = "text-amber-800";
+            [title, desc, boxClass, titleClass] = ["干燥", "易产生静电、皮肤干裂、呼吸道不适。", "bg-amber-50 border-amber-200", "text-amber-800"];
         } else if (rh > 60) {
-            title = "潮湿"; desc = "易滋生尘螨、霉菌，体感闷热或阴冷。";
-            boxClass = "bg-blue-50 border-blue-200"; titleClass = "text-blue-800";
+            [title, desc, boxClass, titleClass] = ["潮湿", "易滋生尘螨、霉菌，体感闷热或阴冷。", "bg-blue-50 border-blue-200", "text-blue-800"];
         } else if (t < 20) {
-            title = "偏冷"; desc = "虽然湿度适宜，但温度较低。";
-            boxClass = "bg-slate-100 border-slate-300"; titleClass = "text-slate-700";
-        } else if (t > 25) {
-            title = "偏热"; desc = "虽然湿度适宜，但温度较高。";
-            boxClass = "bg-orange-50 border-orange-200"; titleClass = "text-orange-800";
+            [title, desc, boxClass, titleClass] = ["偏冷", "虽然湿度适宜，但温度较低。", "bg-slate-100 border-slate-300", "text-slate-700"];
+        } else { // t > 25
+            [title, desc, boxClass, titleClass] = ["偏热", "虽然湿度适宜，但温度较高。", "bg-orange-50 border-orange-200", "text-orange-800"];
         }
-
-        comfortTitle.innerHTML = `<span class="material-symbols-outlined">${rh >= 40 && rh <= 60 && t>=20 && t<=25 ? 'sentiment_satisfied' : 'sentiment_dissatisfied'}</span> ${title}`;
+        const icon = (t >= 20 && t <= 25 && rh >= 40 && rh <= 60) ? 'sentiment_satisfied' : 'sentiment_dissatisfied';
+        comfortTitle.innerHTML = `<span class="material-symbols-outlined">${icon}</span> ${title}`;
         comfortTitle.className = `font-bold text-lg mb-1 flex items-center gap-2 ${titleClass}`;
         comfortDesc.innerText = desc;
-        comfortBox.className = `mt-8 p-4 rounded-xl border transition-colors duration-300 ${boxClass}`;
+        comfortBox.className = `col-span-2 p-4 rounded-xl border transition-colors duration-300 ${boxClass}`;
+    }
+
+    function updateSimulation() {
+        const To = parseFloat(outTempIn.value);
+        const Ti = parseFloat(tempSlider.value);
+        const RHi = parseFloat(humiditySlider.value);
+        const U = parseFloat(winTypeIn.value);
+        outTempDisp.innerText = To.toFixed(1) + "°C";
+
+        const dp = calculateDewPoint(Ti, RHi);
+        const Tg = Ti - (U / 8.3) * (Ti - To);
+        dewPointVal.innerText = dp.toFixed(1) + "°C";
+        glassTempVal.innerText = Tg.toFixed(1) + "°C";
+
+        if (Tg <= dp) {
+            if (Tg < 0) { // Frost
+                fogLayer.style.opacity = 0;
+                frostLayer.style.opacity = 1;
+                statusAlert.className = "absolute bottom-6 left-1/2 -translate-x-1/2 bg-blue-600/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-blue-400 w-max max-w-[90%]";
+                statusAlert.innerHTML = `<span class="material-symbols-outlined">ac_unit</span><span>玻璃结冰/霜！(T < 0°C)</span>`;
+                dropletsContainer.innerHTML = '';
+            } else { // Condensation
+                fogLayer.style.opacity = Math.min((dp - Tg) * 0.3 + 0.3, 1);
+                frostLayer.style.opacity = 0;
+                statusAlert.className = "absolute bottom-6 left-1/2 -translate-x-1/2 bg-amber-500/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-amber-400 w-max max-w-[90%]";
+                statusAlert.innerHTML = `<span class="material-symbols-outlined">water_drop</span><span>玻璃结露 (潮湿)</span>`;
+                if ((dp - Tg) > 3 && Math.random() > 0.7) createDroplet();
+            }
+        } else { // Dry
+            fogLayer.style.opacity = 0;
+            frostLayer.style.opacity = 0;
+            statusAlert.className = "absolute bottom-6 left-1/2 -translate-x-1/2 bg-green-600/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-green-400 w-max max-w-[90%]";
+            statusAlert.innerHTML = `<span class="material-symbols-outlined">check_circle</span><span>玻璃表面干燥</span>`;
+            dropletsContainer.innerHTML = '';
+        }
     }
 
     function updateState(source) {
@@ -815,52 +698,48 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         let rh = parseFloat(humiditySlider.value);
         
         if (source === 'temp' && isAHLocked) {
-            // Recalculate RH to maintain AH
-            const newRH = calculateRH(t, lockedAHValue);
-            rh = Math.round(newRH);
+            rh = calculateRH(t, lockedAHValue);
             humiditySlider.value = rh;
-            
-            // Visual feedback that RH is changing automatically
             humidityDisplay.classList.add('text-indigo-600', 'scale-110');
             setTimeout(() => humidityDisplay.classList.remove('text-indigo-600', 'scale-110'), 300);
         }
         
-        // Calculate current AH
         const currentAH = calculateAH(t, rh);
-        
-        // Update Displays
-        tempDisplay.innerText = t + "°C";
-        humidityDisplay.innerText = rh + "%";
-        ahDisplay.innerText = currentAH.toFixed(1);
-        
-        // Update Chart: find the current-state dataset by label to avoid index fragility
-        const stateDs = chart.data.datasets.find(ds => ds.label === '当前状态');
-        if (stateDs) {
-            stateDs.data[0] = {x: t, y: rh};
-        } else {
-            // fallback to first dataset (legacy)
-            chart.data.datasets[0].data[0] = {x: t, y: rh};
-        }
-        chart.update();
-
-        // Update Comfort Box
-        updateComfortUI(t, rh);
-
-        // If source was humidity (user dragged RH slider), update the locked value if locked
         if (source === 'humidity' && isAHLocked) {
             lockedAHValue = currentAH;
         }
+        
+        tempDisplay.innerText = t.toFixed(1) + "°C";
+        humidityDisplay.innerText = rh.toFixed(1) + "%";
+        ahDisplay.innerText = currentAH.toFixed(1);
+        
+        const stateDs = chart.data.datasets.find(ds => ds.label === '当前状态');
+        if (stateDs) stateDs.data[0] = {x: t, y: rh};
+        chart.update();
+
+        updateComfortUI(t, rh);
+        updateSimulation(); // Update simulation on any indoor change
     }
 
-    // Lock Toggle Logic
+    function createDroplet() {
+        if (dropletsContainer.childElementCount > 10) return;
+        const drop = document.createElement('div');
+        drop.className = 'absolute bg-white/60 rounded-full blur-[1px]';
+        const size = Math.random() * 4 + 2;
+        drop.style.cssText = `width:${size}px; height:${size}px; left:${Math.random()*100}%; top:${Math.random()*30}%; transition: all 3s ease-in;`;
+        dropletsContainer.appendChild(drop);
+        
+        setTimeout(() => {
+            drop.style.top = (parseFloat(drop.style.top) + 60) + '%';
+            drop.style.opacity = 0;
+        }, 50);
+        setTimeout(() => drop.remove(), 3000);
+    }
+
     ahLockBtn.addEventListener('click', () => {
         isAHLocked = !isAHLocked;
-        const t = parseFloat(tempSlider.value);
-        const rh = parseFloat(humiditySlider.value);
-        
         if (isAHLocked) {
-            lockedAHValue = calculateAH(t, rh);
-            // Visuals
+            lockedAHValue = calculateAH(parseFloat(tempSlider.value), parseFloat(humiditySlider.value));
             ahLockBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border shadow-sm bg-indigo-600 text-white border-indigo-600 hover:bg-indigo-700";
             lockIcon.innerText = "lock";
             lockText.innerText = "已锁定";
@@ -869,7 +748,6 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
             lockMessage.classList.remove('hidden');
             humiditySlider.classList.add('locked');
         } else {
-            // Visuals
             ahLockBtn.className = "flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-bold transition-all border shadow-sm bg-white text-slate-500 border-slate-200 hover:bg-slate-50";
             lockIcon.innerText = "lock_open";
             lockText.innerText = "锁定 AH";
@@ -880,100 +758,13 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
         }
     });
 
+    // Event Listeners
     tempSlider.addEventListener('input', () => updateState('temp'));
     humiditySlider.addEventListener('input', () => updateState('humidity'));
+    [outTempIn, winTypeIn].forEach(el => el.addEventListener('input', updateSimulation));
 
-
-    /* --- TOOL 2: SIMULATION LOGIC --- */
-    
-    const outTempIn = document.getElementById('out-temp');
-    const inTempIn = document.getElementById('in-temp');
-    const inHumIn = document.getElementById('in-hum');
-    const winTypeIn = document.getElementById('window-type');
-    
-    const dropletsContainer = document.getElementById('droplets-container');
-
-    function updateSimulation() {
-        const To = parseFloat(outTempIn.value);
-        const Ti = parseFloat(inTempIn.value);
-        const RHi = parseFloat(inHumIn.value);
-        const U = parseFloat(winTypeIn.value);
-
-        document.getElementById('out-temp-disp').innerText = To + "°C";
-        document.getElementById('in-temp-disp').innerText = Ti + "°C";
-        document.getElementById('in-hum-disp').innerText = RHi + "%";
-
-        // Physics
-        const dp = calculateDewPoint(Ti, RHi);
-        // Glass Temp Formula: Tg = Ti - (U/hi) * (Ti - To), assume hi=8.3
-        const Tg = Ti - (U / 8.3) * (Ti - To);
-        const ah = calculateAH(Ti, RHi);
-
-        document.getElementById('dew-point-val').innerText = dp.toFixed(1) + "°C";
-        document.getElementById('glass-temp-val').innerText = Tg.toFixed(1) + "°C";
-        document.getElementById('sim-ah-val').innerText = ah.toFixed(1) + " g/m³";
-
-        const fog = document.getElementById('fog-layer');
-        const frost = document.getElementById('frost-layer');
-        const alert = document.getElementById('status-alert');
-
-        // Logic
-        if (Tg <= dp) {
-            if (Tg < 0) {
-                // Frost
-                fog.style.opacity = 0;
-                frost.style.opacity = 1;
-                alert.className = "absolute bottom-6 left-1/2 -translate-x-1/2 bg-blue-600/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-blue-400 w-max max-w-[90%]";
-                alert.innerHTML = `<span class="material-symbols-outlined">ac_unit</span><span>玻璃结冰/霜！(T < 0°C)</span>`;
-                dropletsContainer.innerHTML = ''; // No running water if frozen
-            } else {
-                // Condensation (Water)
-                fog.style.opacity = Math.min((dp - Tg) * 0.3 + 0.3, 1);
-                frost.style.opacity = 0;
-                alert.className = "absolute bottom-6 left-1/2 -translate-x-1/2 bg-amber-500/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-amber-400 w-max max-w-[90%]";
-                alert.innerHTML = `<span class="material-symbols-outlined">water_drop</span><span>玻璃结露 (潮湿)</span>`;
-                
-                // Add droplets if very wet
-                if ((dp - Tg) > 3 && Math.random() > 0.7) {
-                   createDroplet();
-                }
-            }
-        } else {
-            // Dry
-            fog.style.opacity = 0;
-            frost.style.opacity = 0;
-            alert.className = "absolute bottom-6 left-1/2 -translate-x-1/2 bg-green-600/90 backdrop-blur-md text-white px-6 py-3 rounded-full flex items-center gap-3 shadow-xl border border-green-400 w-max max-w-[90%]";
-            alert.innerHTML = `<span class="material-symbols-outlined">check_circle</span><span>玻璃表面干燥</span>`;
-            dropletsContainer.innerHTML = '';
-        }
-    }
-
-    function createDroplet() {
-        if (dropletsContainer.childElementCount > 10) return;
-        const drop = document.createElement('div');
-        drop.className = 'absolute bg-white/60 rounded-full blur-[1px]';
-        const size = Math.random() * 4 + 2;
-        drop.style.width = size + 'px';
-        drop.style.height = size + 'px';
-        drop.style.left = Math.random() * 100 + '%';
-        drop.style.top = Math.random() * 30 + '%';
-        drop.style.transition = 'top 3s ease-in, opacity 3s ease-in';
-        dropletsContainer.appendChild(drop);
-        
-        setTimeout(() => {
-            drop.style.top = (parseInt(drop.style.top) + 60) + '%';
-            drop.style.opacity = 0;
-        }, 50);
-
-        setTimeout(() => drop.remove(), 3000);
-    }
-
-    [outTempIn, inTempIn, inHumIn, winTypeIn].forEach(el => el.addEventListener('input', updateSimulation));
-
-    // Initialize
+    // Initial Load
     updateState('init');
-    updateSimulation();
-
 </script>
 
 <!-- Panel switcher: toggles panels and triggers chart/simulation refresh -->
