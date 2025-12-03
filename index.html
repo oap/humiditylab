@@ -421,7 +421,7 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                                 <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">thermostat</span> 室内温度</span>
                                 <span class="text-2xl font-bold text-blue-600 font-mono" id="temp-display">14°C</span>
                             </label>
-                            <input type="range" id="temp-slider" min="0" max="40" value="22" step="1" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+                            <input type="range" id="temp-slider" min="0" max="40" value="22" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
                             <div class="flex justify-between text-xs text-slate-400 mt-2">
                                 <span>0°C</span>
                                 <span>20°C</span>
@@ -435,7 +435,7 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                                 <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">water_drop</span> 相对湿度 (RH)</span>
                                 <span class="text-2xl font-bold text-teal-600 font-mono" id="humidity-display">63%</span>
                             </label>
-                            <input type="range" id="humidity-slider" min="0" max="100" value="50" step="1" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
+                            <input type="range" id="humidity-slider" min="0" max="100" value="50" step="0.5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-teal-600">
                             <div class="flex justify-between text-xs text-slate-400 mt-2">
                                 <span>干燥</span>
                                 <span>适宜 (40-60%)</span>
@@ -559,21 +559,21 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
                                 <span class="text-sm text-slate-300">室外温度</span>
                                 <span class="text-blue-300 font-mono" id="out-temp-disp">-10°C</span>
                             </div>
-                            <input type="range" id="out-temp" min="-30" max="15" value="-10" step="1" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="out-temp" min="-40" max="15" value="-10" step="0.5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
                                 <span class="text-sm text-slate-300">室内温度</span>
                                 <span class="text-orange-300 font-mono" id="in-temp-disp">22°C</span>
                             </div>
-                            <input type="range" id="in-temp" min="15" max="30" value="22" step="1" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="in-temp" min="15" max="30" value="22" step="0.5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
                         <div>
                             <div class="flex justify-between mb-1">
                                 <span class="text-sm text-slate-300">室内湿度 (RH)</span>
                                 <span class="text-teal-300 font-mono" id="in-hum-disp">50%</span>
                             </div>
-                            <input type="range" id="in-hum" min="10" max="80" value="50" step="1" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
+                            <input type="range" id="in-hum" min="10" max="80" value="50" step="0.5" class="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer">
                         </div>
                     </div>
 
@@ -811,8 +811,8 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     }
 
     function updateState(source) {
-        let t = parseInt(tempSlider.value);
-        let rh = parseInt(humiditySlider.value);
+        let t = parseFloat(tempSlider.value);
+        let rh = parseFloat(humiditySlider.value);
         
         if (source === 'temp' && isAHLocked) {
             // Recalculate RH to maintain AH
@@ -855,8 +855,8 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     // Lock Toggle Logic
     ahLockBtn.addEventListener('click', () => {
         isAHLocked = !isAHLocked;
-        const t = parseInt(tempSlider.value);
-        const rh = parseInt(humiditySlider.value);
+        const t = parseFloat(tempSlider.value);
+        const rh = parseFloat(humiditySlider.value);
         
         if (isAHLocked) {
             lockedAHValue = calculateAH(t, rh);
@@ -894,9 +894,9 @@ wb);O(IMG_SEARCH_ATTRIBUTION_MAP,Pd);O(IMG_GEN_REPLACE_MAP,fa.A);X();jf();h.A=0}
     const dropletsContainer = document.getElementById('droplets-container');
 
     function updateSimulation() {
-        const To = parseInt(outTempIn.value);
-        const Ti = parseInt(inTempIn.value);
-        const RHi = parseInt(inHumIn.value);
+        const To = parseFloat(outTempIn.value);
+        const Ti = parseFloat(inTempIn.value);
+        const RHi = parseFloat(inHumIn.value);
         const U = parseFloat(winTypeIn.value);
 
         document.getElementById('out-temp-disp').innerText = To + "°C";
