@@ -1,109 +1,111 @@
-# 窗户结露与舒适度计算器
+# Window Condensation & Comfort Calculator
 
-可视化室内温湿度、露点与居住舒适度关系的交互式计算工具。
+[中文版 (Chinese Version)](README_CN.md)
 
-- 主文件：`index.html`（单文件实现交互、计算与可视化）。
-- 资源：图片存放在 `images/`。
+An interactive calculator to visualize the relationship between indoor temperature, humidity, dew point, and living comfort.
 
-快速上手
-- 在浏览器中打开 `index.html`（双击或使用本地静态服务器）。
+- **Main File**: `index.html` (Single-file implementation for interaction, calculation, and visualization).
+- **Assets**: Images are stored in `images/`.
 
-## 操作指南
+## Quick Start
+- Open `index.html` in your browser (double-click or use a local static server).
 
-### 1. 调节环境参数（左侧面板）
-- **室内温度**：拖动滑块设置室内温度（15°C - 30°C）。
-- **相对湿度 (RH)**：设置空气中水蒸气的饱和程度（10% - 80%）。
-- **锁定 AH (绝对湿度)**：
-    - 点击“锁定 AH”按钮可固定空气中的实际含水量（克/立方米）。
-    - **应用场景**：模拟封闭房间加热或冷却时的湿度变化。例如，当 AH 锁定为 8.0 g/m³ 时，将温度从 20°C 升高到 25°C，相对湿度会自动下降（空气变干）。
+## Operation Guide
 
-### 2. 设置外部条件（左侧 & 右侧面板）
-- **室外温度**：模拟从极寒 (-40°C) 到凉爽 (15°C) 的天气。
-- **窗户类型**：在右侧“窗户结露模拟”卡片中选择不同保温性能的窗户：
-    - `U=5.8` (单层玻璃)：保温差，极易结露。
-    - `U=2.8` (普通双层)：标准配置。
-    - `U=1.6` / `U=0.8` (Low-E / 三层)：高性能，不易结露。
+### 1. Adjust Environmental Parameters (Left Panel)
+- **Indoor Temp**: Drag the slider to set the indoor temperature (15°C - 30°C).
+- **Relative Humidity (RH)**: Set the saturation level of water vapor in the air (10% - 80%).
+- **Lock AH (Absolute Humidity)**:
+    - Click the "Lock AH" button to fix the actual water content in the air (g/m³).
+    - **Use Case**: Simulates humidity changes when heating or cooling a sealed room. For example, if AH is locked at 8.0 g/m³, raising the temperature from 20°C to 25°C will automatically lower the relative humidity (air becomes drier).
 
----
-
-## 数据解读与示例
-
-本工具的核心在于展示**舒适度**与**物理限制（结露）**之间的平衡。
-
-### 1. 露点温度 (Dew Point)
-> **定义**：空气中的水蒸气开始凝结成液态水的温度。
-
-*   **示例**：
-    *   设定：室内 **22°C**，相对湿度 **50%**。
-    *   结果：露点为 **11.1°C**。
-    *   **解读**：这意味着，如果窗户（或墙壁）表面的温度低于 11.1°C，水蒸气就会在上面凝结成水珠。
-
-### 2. 玻璃内表面温度 vs 结露风险
-玻璃温度取决于室内外温差和窗户的 U 值（导热系数）。
-
-*   **场景 A：结露危机**
-    *   **条件**：室外 **-10°C**，室内 **22°C**，湿度 **50%**（露点 11.1°C）。
-    *   **窗户**：单层玻璃 (U=5.8)。
-    *   **结果**：玻璃表面温度降至 **-0.4°C**。
-    *   **现象**：-0.4°C < 11.1°C，且低于冰点 -> **严重结冰/结霜**。
-
-*   **场景 B：安全平衡**
-    *   **条件**：同上（室外 -10°C，室内 22°C，湿度 50%）。
-    *   **窗户**：普通双层中空 (U=2.8)。
-    *   **结果**：玻璃表面温度提升至 **11.2°C**。
-    *   **现象**：11.2°C > 11.1°C -> **玻璃表面干燥**（刚好避免结露）。
-
-### 3. 焓湿图与舒适区
-右侧图表展示了当前的空气状态是否适宜居住，判定标准如下：
-
-#### A. 理想舒适区 (绿色区域)
-最严格的健康舒适标准，对应状态栏的“完美舒适”。
-*   **温度范围**：20°C - 25°C
-*   **湿度范围**：40% - 60%
-*   **依据**：在此范围内，人体感觉最舒适，且能有效抑制霉菌（>60%易发）和病毒（<40%活跃）的传播。
-
-#### B. 可接受区 (橙色区域)
-人体尚可忍受的较宽泛范围。
-*   **温度范围**：约 15°C - 26°C
-*   **湿度范围**：约 30% - 70% (随温度动态变化)
-*   **逻辑**：
-    *   低温时（如 15°C）允许湿度较低，因为冷湿更难受。
-    *   高温时（如 26°C）湿度上限降低，避免“桑拿天”体感。
-
-#### C. 不舒适区 (空白区域)
-*   **过于干燥 (<40%)**：易引发静电、皮肤干裂、呼吸道不适。
-*   **过于潮湿 (>60%)**：易滋生霉菌、尘螨，体感闷热或阴冷。
+### 2. Set External Conditions (Left & Right Panels)
+- **Outdoor Temp**: Simulate weather from extreme cold (-40°C) to cool (15°C).
+- **Window Type**: Select windows with different insulation properties in the "Window Simulation" card on the right:
+    - `U=5.8` (Single Pane): Poor insulation, prone to condensation.
+    - `U=2.8` (Standard Double Glazing): Standard configuration.
+    - `U=1.6` / `U=0.8` (Low-E / Triple Glazing): High performance, resistant to condensation.
 
 ---
 
-## 未来改进计划
+## Data Interpretation & Examples
 
-### 1. 功能增强
-*   **场景预设**：添加“南方梅雨季”、“北方冬夜”等一键场景，帮助用户快速理解典型气候。
-*   **自定义 U 值**：允许用户输入具体的窗户 U 值，适应更多建筑材料。
-*   **霉菌风险预警**：增加霉菌生长风险指数（通常在表面湿度 >80% 时发生）。
+The core of this tool is to demonstrate the balance between **Comfort** and **Physical Limits (Condensation)**.
 
-### 2. 交互体验
-*   **通风模拟**：增加“开窗通风”按钮，动态计算引入室外空气后的温湿度变化。
-*   **图表交互**：支持直接点击焓湿图设定状态。
+### 1. Dew Point
+> **Definition**: The temperature at which water vapor in the air begins to condense into liquid water.
 
-### 3. 视觉与沉浸感
-*   **动态室外背景**：根据室外温度自动切换背景（如雪景、雨天、晴天）。
-*   **更细腻的粒子效果**：使用 Canvas 模拟更真实的水珠汇聚与流下效果。
+*   **Example**:
+    *   Settings: Indoor **22°C**, RH **50%**.
+    *   Result: Dew Point is **11.1°C**.
+    *   **Interpretation**: This means if the surface temperature of a window (or wall) is below 11.1°C, water vapor will condense into droplets on it.
 
-### 4. 技术架构
-*   **PWA 支持**：添加离线支持，使其可作为独立应用安装。
+### 2. Glass Surface Temp vs. Condensation Risk
+Glass temperature depends on the indoor-outdoor temperature difference and the window's U-value (thermal conductivity).
+
+*   **Scenario A: Condensation Crisis**
+    *   **Conditions**: Outdoor **-10°C**, Indoor **22°C**, Humidity **50%** (Dew Point 11.1°C).
+    *   **Window**: Single Pane (U=5.8).
+    *   **Result**: Glass surface temp drops to **-0.4°C**.
+    *   **Phenomenon**: -0.4°C < 11.1°C, and below freezing -> **Severe Icing/Frost**.
+
+*   **Scenario B: Safe Balance**
+    *   **Conditions**: Same as above (Outdoor -10°C, Indoor 22°C, Humidity 50%).
+    *   **Window**: Standard Double Glazing (U=2.8).
+    *   **Result**: Glass surface temp rises to **11.2°C**.
+    *   **Phenomenon**: 11.2°C > 11.1°C -> **Glass Surface Dry** (Just avoided condensation).
+
+### 3. Psychrometric Chart & Comfort Zones
+The chart on the right shows whether the current air condition is suitable for living, based on the following standards:
+
+#### A. Ideal Comfort Zone (Green Area)
+The strictest standard for health and comfort, corresponding to "Perfect Comfort" in the status bar.
+*   **Temperature Range**: 20°C - 25°C
+*   **Humidity Range**: 40% - 60%
+*   **Rationale**: Within this range, the human body feels most comfortable, and it effectively inhibits the spread of mold (>60% prone) and viruses (<40% active).
+
+#### B. Acceptable Area (Amber Area)
+A broader range that is tolerable for the human body.
+*   **Temperature Range**: Approx. 15°C - 26°C
+*   **Humidity Range**: Approx. 30% - 70% (Varies dynamically with temperature)
+*   **Logic**:
+    *   At low temps (e.g., 15°C), lower humidity is allowed because cold + damp feels worse.
+    *   At high temps (e.g., 26°C), the upper humidity limit is lowered to avoid a "sauna" feeling.
+
+#### C. Uncomfortable Zone (Blank Area)
+*   **Too Dry (<40%)**: Prone to static electricity, dry skin, and respiratory discomfort.
+*   **Too Humid (>60%)**: Prone to mold and dust mites, feeling stuffy or clammy.
 
 ---
 
-## 参考资料 (References)
+## Future Improvements
 
-本工具的计算逻辑与舒适度标准参考了以下文档：
+### 1. Functionality Enhancements
+*   **Presets**: Add one-click scenes like "Plum Rain Season" or "Northern Winter Night" to help users quickly understand typical climates.
+*   **Custom U-Value**: Allow users to input specific window U-values to adapt to more building materials.
+*   **Mold Risk Warning**: Add a mold growth risk index (usually occurs when surface humidity >80%).
+
+### 2. User Experience
+*   **Ventilation Simulation**: Add an "Open Window" button to dynamically calculate temperature and humidity changes after introducing outdoor air.
+*   **Interactive Chart**: Support setting the state by directly clicking on the Psychrometric Chart.
+
+### 3. Visuals & Immersion
+*   **Dynamic Outdoor Background**: Automatically switch backgrounds based on outdoor temperature (e.g., snowy, rainy, sunny).
+*   **Finer Particle Effects**: Use Canvas to simulate more realistic water droplet accumulation and flow effects.
+
+### 4. Technical Architecture
+*   **PWA Support**: Add offline support to allow installation as a standalone app.
+
+---
+
+## References
+
+The calculation logic and comfort standards of this tool reference the following documents:
 
 1.  **Psychrometrics - Dew Point and Wet-Bulb Temperature** (CED Engineering)
     *   [M08-011 - Course Preview - R1.pdf](https://www.cedengineering.com/userfiles/M08-011%20-%20Course%20Preview%20-%20R1.pdf)
 2.  **Residential Indoor Air Quality Guideline: Moulds** (Health Canada)
     *   [H144-33-2016-eng.pdf](https://publications.gc.ca/collections/collection_2018/sc-hc/H144-33-2016-eng.pdf)
 
-许可
-- 本项目采用 Apache License 2.0 许可（详见 `LICENSE` 文件）。
+## License
+- This project is licensed under the Apache License 2.0 (see `LICENSE` file).
