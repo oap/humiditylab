@@ -20,17 +20,21 @@ To generate the protected, minified version of the application:
 
 2.  **Run the build command**:
     ```bash
-    # Create the dist directory
-    mkdir -p dist
+    # Create the docs directory (GitHub Pages supports /docs)
+    mkdir -p docs
 
     # Minify HTML/CSS/JS
-    npx html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true -o dist/index.html index.html
+    npx html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true -o docs/index.html index.html
 
     # Copy assets
-    cp -r images dist/images
+    cp -r images docs/images
     ```
 
-3.  **Deploy**: Upload the contents of the `dist/` folder to your web server.
+3.  **Deploy**: 
+    *   Push your code to GitHub.
+    *   Go to **Settings > Pages**.
+    *   Select **Source**: `Deploy from a branch`.
+    *   Select **Branch**: `main` (or your default branch) and **Folder**: `/docs`.
 
 ## Operation Guide
 
