@@ -7,8 +7,30 @@ An interactive calculator to visualize the relationship between indoor temperatu
 - **Main File**: `index.html` (Single-file implementation for interaction, calculation, and visualization).
 - **Assets**: Images are stored in `images/`.
 
-## Quick Start
+## Quick Start (Development)
 - Open `index.html` in your browser (double-click or use a local static server).
+
+## Build for Production
+To generate the protected, minified version of the application:
+
+1.  **Install dependencies** (if you haven't already):
+    ```bash
+    npm install -g html-minifier
+    ```
+
+2.  **Run the build command**:
+    ```bash
+    # Create the dist directory
+    mkdir -p dist
+
+    # Minify HTML/CSS/JS
+    npx html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true -o dist/index.html index.html
+
+    # Copy assets
+    cp -r images dist/images
+    ```
+
+3.  **Deploy**: Upload the contents of the `dist/` folder to your web server.
 
 ## Operation Guide
 
@@ -108,4 +130,5 @@ The calculation logic and comfort standards of this tool reference the following
     *   [H144-33-2016-eng.pdf](https://publications.gc.ca/collections/collection_2018/sc-hc/H144-33-2016-eng.pdf)
 
 ## License
-- This project is licensed under the Apache License 2.0 (see `LICENSE` file).
+- Copyright &copy; 2025 chefbig.ca. All Rights Reserved.
+- This project is proprietary. Unauthorized copying, distribution, or modification is prohibited.
