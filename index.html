@@ -2314,9 +2314,18 @@
     </div>
 
 
-    <!-- Footer -->
-    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-slate-400">
-        &copy; 2025 chefbig.ca. All Rights Reserved.
+    <!-- Footer with Share Button -->
+    <div class="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center">
+        <div class="mb-4">
+            <button onclick="shareApp()"
+                class="inline-flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-full shadow-md transition-all hover:scale-105 active:scale-95">
+                <span class="material-symbols-outlined text-sm">share</span>
+                <span data-i18n="shareBtn">分享给朋友</span>
+            </button>
+        </div>
+        <div class="text-sm text-slate-400">
+            &copy; 2025 chefbig.ca. All Rights Reserved.
+        </div>
     </div>
 
     <script>
@@ -2368,7 +2377,9 @@
                 chartLabelAcceptable: "可接受区",
                 chartLabelIdeal: "理想舒适区",
                 chartAxisX: "温度 (°C)",
-                chartAxisY: "相对湿度 (%)"
+                chartAxisY: "相对湿度 (%)",
+                shareBtn: "分享给朋友",
+                shareAlert: "链接已复制到剪贴板！"
             },
             en: {
                 appTitle: "Window Condensation & Comfort Calculator",
@@ -2416,7 +2427,9 @@
                 chartLabelAcceptable: "Acceptable",
                 chartLabelIdeal: "Ideal Comfort",
                 chartAxisX: "Temperature (°C)",
-                chartAxisY: "Relative Humidity (%)"
+                chartAxisY: "Relative Humidity (%)",
+                shareBtn: "Share with Friends",
+                shareAlert: "Link copied to clipboard!"
             }
         };
 
@@ -2578,6 +2591,7 @@
                 }
             }
         });
+        window.chart = chart;
 
         let isAHLocked = false;
         let lockedAHValue = 0;
@@ -2706,6 +2720,34 @@
         tempSlider.addEventListener('input', () => updateState('temp'));
         humiditySlider.addEventListener('input', () => updateState('humidity'));
         [outTempIn, winTypeIn].forEach(el => el.addEventListener('input', updateSimulation));
+
+        // Share Functionality
+        async function shareApp() {
+            const shareData = {
+                title: translations[currentLang].appTitle,
+                text: translations[currentLang].appSubtitle,
+                url: window.location.href
+            };
+
+            try {
+                if (navigator.share) {
+                    await navigator.share(shareData);
+                } else {
+                    // Fallback to copy clipboard
+                    await navigator.clipboard.writeText(window.location.href);
+                    // Show a simple toast or alert (using the existing status alert for simplicity, or just valid JS alert)
+                    // We'll reuse the status-alert style but inject it temporarily somewhere else or just use standard alert for simplicity on desktop fallback.
+                    // Actually, let's make a temporary toast.
+                    const toast = document.createElement('div');
+                    toast.className = "fixed bottom-10 left-1/2 -translate-x-1/2 bg-slate-800 text-white px-4 py-2 rounded-lg shadow-lg z-50 text-sm animate-bounce";
+                    toast.innerText = translations[currentLang].shareAlert;
+                    document.body.appendChild(toast);
+                    setTimeout(() => toast.remove(), 2000);
+                }
+            } catch (err) {
+                console.error('Error sharing:', err);
+            }
+        }
 
         // Initial Load
         setLanguage(currentLang);
