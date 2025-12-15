@@ -1,0 +1,10 @@
+{
+  "name": "humiditylab",
+  "version": "1.0.0",
+  "description": "Window Condensation & Comfort Calculator",
+  "scripts": {
+    "build": "mkdir -p docs && npx html-minifier --collapse-whitespace --remove-comments --minify-js true --minify-css true -o docs/index.html index.html && cp -r images docs/"
+  },
+  "author": "chefbig.ca",
+  "license": "UNLICENSED"
+}
